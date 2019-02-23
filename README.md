@@ -1,5 +1,5 @@
 # ws4sd
-Web Socket client plugin for StreamDeck macro keyboard
+Web Socket client plugin for StreamDeck macro keyboard.
 This project is a javascript project.
 This project is going to have a sister project, just as soon as i pick a name for it.
 
