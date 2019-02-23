@@ -1,5 +1,7 @@
 # ws4sd
 Web Socket client plugin for StreamDeck macro keyboard
+This project is a javascript project.
+This project is going to have a sister project, just as soon as i pick a name for it.
 
 
 Goals in order of priority;
@@ -8,5 +10,3 @@ receive integers to display.
 auto-connect.
 button outline colour to indicate connection status.
 ssl.
-
-btw this is a javascript project.
