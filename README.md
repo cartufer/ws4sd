@@ -9,4 +9,5 @@ send string based websockets to network devices.
 receive integers to display.
 auto-connect.
 button outline colour to indicate connection status.
+rgb colour picker in property inspector.
 ssl.
