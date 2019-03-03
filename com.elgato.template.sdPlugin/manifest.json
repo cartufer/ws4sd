@@ -2,25 +2,25 @@
   "Actions": [
     {
       "Icon": "action/images/actionimage", 
-      "Name": "Example Action", 
+      "Name": "Send websocket", 
       "States": [
         {
           "Image": "action/images/action"
         }
       ], 
-      "Tooltip": "This is an example tooltip", 
-      "UUID": "com.elgato.template.action"
+      "Tooltip": "This will send a websocket.", 
+      "UUID": "com.github.cartufer.action"
     }
   ], 
   "SDKVersion": 2,
-  "Author": "Elgato Systems", 
+  "Author": "Adam Darrah", 
   "CodePath": "index.html", 
   "PropertyInspectorPath": "propertyinspector/index.html", 
-  "Description": "Example description", 
-  "Name": "Stream Deck Template", 
+  "Description": "Websocket client", 
+  "Name": "Websockets 4 StreamDeck", 
   "Icon": "action/images/action", 
-  "URL": "https://www.elgato.com/en/gaming/stream-deck", 
-  "Version": "1.0.0",
+  "URL": "https://www.github.com/cartufer/ws4sd/", 
+  "Version": "0.1.42",
   "OS": [
     {
         "Platform": "mac", 
