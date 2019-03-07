@@ -69,16 +69,21 @@ const action = {
          * $SD.api.getSettings(jsn.context);
         */
         this.settings = jsn.payload.settings;
+     
+     // this is where i'm going to do setup, cartufer
 
         // nothing in the settings pre-fill something just for demonstration purposes
-        if (!this.settings || Object.keys(this.settings).length === 0) {
-            this.settings.mynameinput = 'TEMPLATE';
-        }
-        this.setTitle(jsn);
+/*        if (!this.settings || Object.keys(this.settings).length === 0) {
+*            this.settings.mynameinput = 'TEMPLATE';
+*        }
+*/
+     this.setTitle(jsn);
     },
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
+     
+     // this is where i'm going to do stuff, cartufer
     },
 
     onSendToPlugin: function (jsn) {
@@ -119,6 +124,7 @@ const action = {
      * @param {JSON} jsn // the JSON object passed from Stream Deck to the plugin, which contains the plugin's context
      * 
      */
+// lets see what happens if i just leave out this function, will it autoset, cartufer
 
     setTitle: function(jsn) {
         if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
