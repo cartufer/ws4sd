@@ -150,8 +150,8 @@ $SD.on('piDataChanged', (returnValue) => {
 
     console.log('%c%s', 'color: white; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
-
-    if (returnValue.key === 'clickme') {
+// lets get this clickme stuff out of here, cartufer
+/*    if (returnValue.key === 'clickme') {
 
         postMessage = (w) => {
             w.postMessage(
@@ -166,14 +166,14 @@ $SD.on('piDataChanged', (returnValue) => {
            postMessage(window.xtWindow);
         }
 
-    } else {
+    } else { */
 
         /* SAVE THE VALUE TO SETTINGS */
         saveSettings(returnValue);
 
         /* SEND THE VALUES TO PLUGIN */
         sendValueToPlugin(returnValue, 'sdpi_collection');
-    }
+    //}
 });
 
 /**
@@ -300,7 +300,8 @@ function prepareDOMElements(baseElement) {
      * You could add a 'label' to a textares, e.g. to show the number of charactes already typed
      * or contained in the textarea. This helper updates this label for you.
      */
-    baseElement.querySelectorAll('textarea').forEach((e) => {
+ // this section has to go, cartufer
+/*    baseElement.querySelectorAll('textarea').forEach((e) => {
         const maxl = e.getAttribute('maxlength');
         e.targets = baseElement.querySelectorAll(`[for='${e.id}']`);
         if (e.targets.length) {
@@ -313,7 +314,7 @@ function prepareDOMElements(baseElement) {
             e.onkeyup = fn;
         }
     });
-
+*/
     baseElement.querySelectorAll('[data-open-url').forEach(e => {
         const value = e.getAttribute('data-open-url');
         if (value) {
@@ -332,7 +333,7 @@ function prepareDOMElements(baseElement) {
         } else {
             console.log(`${value} is not a supported url`);
         }
-    });
+     });
 }
 
 function handleSdpiItemChange(e, idx) {
