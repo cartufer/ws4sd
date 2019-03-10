@@ -315,6 +315,8 @@ function prepareDOMElements(baseElement) {
         }
     });
 */
+ 
+ // we can probably take this out, cartufer
     baseElement.querySelectorAll('[data-open-url').forEach(e => {
         const value = e.getAttribute('data-open-url');
         if (value) {
