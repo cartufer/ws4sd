@@ -47,7 +47,7 @@ const action = {
          * the key.
          */
 
-         this.setTitle(jsn);
+         //this.setTitle(jsn);
     },
 
     /** 
@@ -77,7 +77,7 @@ const action = {
 *            this.settings.mynameinput = 'TEMPLATE';
 *        }
 */
-     this.setTitle(jsn);
+     //this.setTitle(jsn);
     },
 
     onKeyUp: function (jsn) {
@@ -125,14 +125,14 @@ const action = {
      * 
      */
 // lets see what happens if i just leave out this function, will it autoset, cartufer
-
+/**
     setTitle: function(jsn) {
         if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
             console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
             $SD.api.setTitle(jsn.context, this.settings.mynameinput);
         }
     },
-
+*/
     /**
      * Finally here's a methood which gets called from various events above.
      * This is just an idea how you can act on receiving some interesting message
