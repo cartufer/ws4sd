@@ -10,6 +10,8 @@ do testing
 
 send websockets, do pinStates
 
+maybe a this.ShowReaction(context, "Alert");
+
 remove images.sketch, make new icons
 
 could probably remove doSomething, it looks like test code
