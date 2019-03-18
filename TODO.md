@@ -12,7 +12,7 @@ send websockets, do pinStates
 
 maybe a this.ShowReaction(context, "Alert");
 
-remove images.sketch, make new icons
+remove images.sketch, make new icons // done, yay!!
 
 could probably remove doSomething, it looks like test code
 
