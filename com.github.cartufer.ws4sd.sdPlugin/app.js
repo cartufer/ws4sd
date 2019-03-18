@@ -18,6 +18,7 @@ function connected(jsn) {
     /** subscribe to the willAppear and other events */
     $SD.on('com.github.cartufer.ws4sd.action.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
+    $SD.on('com.github.cartufer.ws4sd.action.keyDown', (jsonObj) => action.onKeyDown(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.propertyInspectorDidAppear', (jsonObj) => {
@@ -56,9 +57,7 @@ const action = {
      * This event is a good place to setup your plugin and look at current settings (if any),
      * which are embedded in the events payload.
      */
-     sendsocket.onmessage = function(str) {
-       console.log("Someone sent: ", str);
-     };
+
 
     onWillAppear: function (jsn) {
         console.log("You can cache your settings in 'onWillAppear'", jsn.payload.settings);
@@ -73,7 +72,16 @@ const action = {
          var websocket = new WebSocket(this.settings.myTarget);this.settings.myTarget
         */
         this.settings = jsn.payload.settings;
-        var sendsocket = new WebSocket(this.settings.myTarget);
+        //var sendsocket = new WebSocket(this.settings.myTarget);
+
+        //sendsocket.onerror = function(evt) {
+        //  console.log("error.Someone sent: ", str);
+        //  this.ShowReaction(context, "Alert");
+        //};
+        //sendsocket.onmessage = function(str) {
+        //  console.log("Someone sent: ", str);
+        //  // this.ShowReaction(context, "Alert");
+        //};
      // this is where i'm going to do setup, cartufer
 
         // nothing in the settings pre-fill something just for demonstration purposes
@@ -86,8 +94,16 @@ const action = {
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
-        sendsocket.send(JSON.stringify(this.settings.myPayload));
-
+        //sendsocket.send(JSON.stringify(this.settings.myPayload));
+        console.log("test");
+        // this.ShowReaction(context, "Alert");
+     // this is where i'm going to do stuff, cartufer
+    },
+    onKeyDown: function (jsn) {
+        this.doSomeThing(jsn, 'onKeyUp', 'green');
+        //sendsocket.send(JSON.stringify(this.settings.myPayload));
+        console.log("test");
+        // this.ShowReaction(context, "Alert");
      // this is where i'm going to do stuff, cartufer
     },
 
@@ -131,12 +147,12 @@ const action = {
      */
 // lets see what happens if i just leave out this function, will it autoset, cartufer
  /**
-    setTitle: function(jsn) {
-        if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
-            console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
-            $SD.api.setTitle(jsn.context, this.settings.mynameinput);
-        }
-    },
+  *  setTitle: function(jsn) {
+  *      if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
+  *          console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
+  *          $SD.api.setTitle(jsn.context, this.settings.mynameinput);
+  *      }
+  *  },
 */
     /**
      * Finally here's a methood which gets called from various events above.
