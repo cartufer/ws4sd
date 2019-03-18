@@ -4,7 +4,7 @@ remove clickme stuff, html and js // might be done
 
 see notation at index_pi.js:304 // i guess i did clickme there
 
-try removing all setTitle stuff, done
+try removing all setTitle stuff, done // maybe put this back
 
 do testing
 
