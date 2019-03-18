@@ -125,7 +125,7 @@ const action = {
      * 
      */
 // lets see what happens if i just leave out this function, will it autoset, cartufer
-/**
+ /**
     setTitle: function(jsn) {
         if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
             console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
