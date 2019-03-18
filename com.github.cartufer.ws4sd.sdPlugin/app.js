@@ -72,16 +72,16 @@ const action = {
          var websocket = new WebSocket(this.settings.myTarget);this.settings.myTarget
         */
         this.settings = jsn.payload.settings;
-        //var sendsocket = new WebSocket(this.settings.myTarget);
+        var sendsocket = new WebSocket(this.settings.myTarget);
 
-        //sendsocket.onerror = function(evt) {
-        //  console.log("error.Someone sent: ", str);
-        //  this.ShowReaction(context, "Alert");
-        //};
-        //sendsocket.onmessage = function(str) {
-        //  console.log("Someone sent: ", str);
-        //  // this.ShowReaction(context, "Alert");
-        //};
+        sendsocket.onerror = function(evt) {
+          console.log("error.Someone sent: ", str);
+          this.ShowReaction(context, "Alert");
+        };
+        sendsocket.onmessage = function(str) {
+          console.log("Someone sent: ", str);
+          // this.ShowReaction(context, "Alert");
+        };
      // this is where i'm going to do setup, cartufer
 
         // nothing in the settings pre-fill something just for demonstration purposes
@@ -94,13 +94,13 @@ const action = {
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
-        //sendsocket.send(JSON.stringify(this.settings.myPayload));
+        sendsocket.send(JSON.stringify(this.settings.myPayload));
         console.log("test");
         // this.ShowReaction(context, "Alert");
      // this is where i'm going to do stuff, cartufer
     },
     onKeyDown: function (jsn) {
-        this.doSomeThing(jsn, 'onKeyUp', 'green');
+        this.doSomeThing(jsn, 'onKeyDown', 'green');
         //sendsocket.send(JSON.stringify(this.settings.myPayload));
         console.log("test");
         // this.ShowReaction(context, "Alert");

@@ -3,7 +3,7 @@
   "Name": "Websockets 4 StreamDeck", 
   "Category": "WS4SD", 
   "com.github.cartufer.ws4sd.action": {
-    "Name": "Action", 
+    "Name": "Send WebSocket", 
     "Tooltip": "This is the only action in this plugin"
   },
   "Localization": {
