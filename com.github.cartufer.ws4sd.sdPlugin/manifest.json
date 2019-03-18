@@ -9,7 +9,7 @@
         }
       ], 
       "Tooltip": "This will send a websocket.", 
-      "UUID": "com.github.cartufer.action"
+      "UUID": "com.github.cartufer.ws4sd.action"
     }
   ], 
   "SDKVersion": 2,

@@ -18,6 +18,7 @@ function connected(jsn) {
     /** subscribe to the willAppear and other events */
     $SD.on('com.github.cartufer.ws4sd.action.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
+    $SD.on('com.github.cartufer.ws4sd.action.keyDown', (jsonObj) => action.onKeyDown(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
     $SD.on('com.github.cartufer.ws4sd.action.propertyInspectorDidAppear', (jsonObj) => {
@@ -50,47 +51,72 @@ const action = {
          //this.setTitle(jsn);
     },
 
-    /** 
+    /**
      * The 'willAppear' event is the first event a key will receive, right before it gets
      * showed on your Stream Deck and/or in Stream Deck software.
      * This event is a good place to setup your plugin and look at current settings (if any),
      * which are embedded in the events payload.
      */
 
+
     onWillAppear: function (jsn) {
         console.log("You can cache your settings in 'onWillAppear'", jsn.payload.settings);
         /**
          * "The willAppear event carries your saved settings (if any). You can use these settings
-         * to setup your plugin or save the settings for later use. 
+         * to setup your plugin or save the settings for later use.
          * If you want to request settings at a later time, you can do so using the
-         * 'getSettings' event, which will tell Stream Deck to send your data 
+         * 'getSettings' event, which will tell Stream Deck to send your data
          * (in the 'didReceiceSettings above)
-         * 
+         *
          * $SD.api.getSettings(jsn.context);
+         var websocket = new WebSocket(this.settings.myTarget);this.settings.myTarget
         */
         this.settings = jsn.payload.settings;
+        //var sendsocket = new WebSocket(this.settings.myTarget);
+
+        //sendsocket.onerror = function(evt) {
+        //  console.log("error.Someone sent: ", str);
+        //  this.ShowReaction(context, "Alert");
+        //};
+        //sendsocket.onmessage = function(str) {
+        //  console.log("Someone sent: ", str);
+        //  // this.ShowReaction(context, "Alert");
+        //};
+     // this is where i'm going to do setup, cartufer
 
         // nothing in the settings pre-fill something just for demonstration purposes
-        //if (!this.settings || Object.keys(this.settings).length === 0) {
-        //    this.settings.mynameinput = 'TEMPLATE';
-        //}
-        //this.setTitle(jsn);
+/*        if (!this.settings || Object.keys(this.settings).length === 0) {
+*            this.settings.mynameinput = 'TEMPLATE';
+*        }
+*/
+     //this.setTitle(jsn);
     },
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
+        //sendsocket.send(JSON.stringify(this.settings.myPayload));
+        console.log("test");
+        // this.ShowReaction(context, "Alert");
+     // this is where i'm going to do stuff, cartufer
+    },
+    onKeyDown: function (jsn) {
+        this.doSomeThing(jsn, 'onKeyUp', 'green');
+        //sendsocket.send(JSON.stringify(this.settings.myPayload));
+        console.log("test");
+        // this.ShowReaction(context, "Alert");
+     // this is where i'm going to do stuff, cartufer
     },
 
     onSendToPlugin: function (jsn) {
         /**
-         * this is a message sent directly from the Property Inspector 
-         * (e.g. some value, which is not saved to settings) 
+         * this is a message sent directly from the Property Inspector
+         * (e.g. some value, which is not saved to settings)
          * You can send this event from Property Inspector (see there for an example)
-         */ 
+         */
 
         const sdpi_collection = Utils.getProp(jsn, 'payload.sdpi_collection', {});
         if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            this.doSomeThing({ [sdpi_collection.key] : sdpi_collection.value }, 'onSendToPlugin', 'fuchsia');            
+            this.doSomeThing({ [sdpi_collection.key] : sdpi_collection.value }, 'onSendToPlugin', 'fuchsia');
         }
     },
 
@@ -115,18 +141,19 @@ const action = {
      * stored in settings.
      * If you enter something into Property Inspector's name field (in this demo),
      * it will get the title of your key.
-     * 
+     *
      * @param {JSON} jsn // the JSON object passed from Stream Deck to the plugin, which contains the plugin's context
-     * 
+     *
      */
-
-//    setTitle: function(jsn) {
-//        if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
-//            console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
-//            $SD.api.setTitle(jsn.context, this.settings.mynameinput);
-//        }
-//    },
-
+// lets see what happens if i just leave out this function, will it autoset, cartufer
+ /**
+  *  setTitle: function(jsn) {
+  *      if (this.settings && this.settings.hasOwnProperty('mynameinput')) {
+  *          console.log("watch the key on your StreamDeck - it got a new title...", this.settings.mynameinput);
+  *          $SD.api.setTitle(jsn.context, this.settings.mynameinput);
+  *      }
+  *  },
+*/
     /**
      * Finally here's a methood which gets called from various events above.
      * This is just an idea how you can act on receiving some interesting message
@@ -136,8 +163,7 @@ const action = {
     doSomeThing: function(inJsonData, caller, tagColor) {
         console.log('%c%s', `color: white; background: ${tagColor || 'grey'}; font-size: 15px;`, `[app.js]doSomeThing from: ${caller}`);
         // console.log(inJsonData);
-    }, 
+    },
 
 
 };
-
