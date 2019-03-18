@@ -56,6 +56,9 @@ const action = {
      * This event is a good place to setup your plugin and look at current settings (if any),
      * which are embedded in the events payload.
      */
+     sendsocket.onmessage = function(str) {
+       console.log("Someone sent: ", str);
+     };
 
     onWillAppear: function (jsn) {
         console.log("You can cache your settings in 'onWillAppear'", jsn.payload.settings);
@@ -83,7 +86,7 @@ const action = {
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
-        websocket.send(JSON.stringify(this.settings.myPayload));
+        sendsocket.send(JSON.stringify(this.settings.myPayload));
 
      // this is where i'm going to do stuff, cartufer
     },
