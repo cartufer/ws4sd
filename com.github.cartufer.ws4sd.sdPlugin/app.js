@@ -11,7 +11,7 @@
   * and other information about the current environmet in a JSON object
   * You can use it to subscribe to events you want to use in your plugin.
   */
-
+var sendsocket;
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
@@ -37,8 +37,19 @@ const action = {
         console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
 
         this.settings = Utils.getProp(jsn, 'payload.settings', {});
-        this.doSomeThing(this.settings, 'onDidReceiveSettings', 'orange');
-
+        //this.doSomeThing(this.settings, 'onDidReceiveSettings', 'orange');
+        // setup websocket, cartufer
+        if(sendsocket){sendsocket.close();console.log('closing socket');}
+        var sendsocket = new WebSocket(this.settings.myTarget);
+console.log('socket setup');
+        sendsocket.onerror = function(evt) {
+          console.log("sendsocket error.");
+          //this.ShowReaction(context, "Alert");
+        };
+        sendsocket.onmessage = function(str) {
+          console.log("Someone sent: ", str);
+          // this.ShowReaction(context, "Alert");
+        };
         /**
          * In this example we put a HTML-input element with id='mynameinput'
          * into the Property Inspector's DOM. If you enter some data into that
@@ -72,16 +83,7 @@ const action = {
          var websocket = new WebSocket(this.settings.myTarget);this.settings.myTarget
         */
         this.settings = jsn.payload.settings;
-        var sendsocket = new WebSocket(this.settings.myTarget);
 
-        sendsocket.onerror = function(evt) {
-          console.log("error.Someone sent: ", str);
-          this.ShowReaction(context, "Alert");
-        };
-        sendsocket.onmessage = function(str) {
-          console.log("Someone sent: ", str);
-          // this.ShowReaction(context, "Alert");
-        };
      // this is where i'm going to do setup, cartufer
 
         // nothing in the settings pre-fill something just for demonstration purposes
@@ -94,15 +96,18 @@ const action = {
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green');
-        sendsocket.send(JSON.stringify(this.settings.myPayload));
-        console.log("test");
+        console.log("onKeyUp");
         // this.ShowReaction(context, "Alert");
      // this is where i'm going to do stuff, cartufer
     },
     onKeyDown: function (jsn) {
-        this.doSomeThing(jsn, 'onKeyDown', 'green');
+        // this.doSomeThing(jsn, 'onKeyDown', 'green');
         //sendsocket.send(JSON.stringify(this.settings.myPayload));
-        console.log("test");
+        //if(typeof sendsocket !== 'undefined'){
+          sendsocket.send(JSON.stringify(this.settings.myPayload));
+          console.log('sending socket');
+        //}//else{this.ShowReaction(jsn, "Alert");}
+        console.log("onKeyDown");
         // this.ShowReaction(context, "Alert");
      // this is where i'm going to do stuff, cartufer
     },
