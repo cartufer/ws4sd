@@ -6,11 +6,11 @@ see notation at index_pi.js:304 // i guess i did clickme there
 
 try removing all setTitle stuff, done // maybe put this back // no, we gonna remove it!!!!
 
-do testing
+do testing // stage 1 done
 
-send websockets, do pinStates
+send websockets, do pinStates // no, just json and strings
 
-maybe a this.ShowReaction(context, "Alert");
+maybe a this.ShowReaction(context, "Alert"); // need to find 'context'
 
 remove images.sketch, make new icons // done, yay!!
 
