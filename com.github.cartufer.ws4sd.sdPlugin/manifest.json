@@ -1,37 +1,37 @@
 {
   "Actions": [
     {
-      "Icon": "action/images/actionimage", 
-      "Name": "Send websocket", 
+      "Icon": "action/images/actionimage",
+      "Name": "Send websocket",
       "States": [
         {
           "Image": "action/images/action"
         }
-      ], 
-      "Tooltip": "This will send a websocket.", 
+      ],
+      "Tooltip": "This will send a websocket.",
       "UUID": "com.github.cartufer.ws4sd.action"
     }
-  ], 
+  ],
   "SDKVersion": 2,
-  "Author": "Adam Darrah", 
-  "CodePath": "index.html", 
-  "PropertyInspectorPath": "propertyinspector/index.html", 
-  "Description": "Websocket client", 
-  "Name": "Websockets 4 StreamDeck", 
-  "Icon": "action/images/action", 
-  "URL": "https://www.github.com/cartufer/ws4sd/", 
-  "Version": "0.1.42",
+  "Author": "Adam Darrah",
+  "CodePath": "index.html",
+  "PropertyInspectorPath": "propertyinspector/index.html",
+  "Description": "Websocket client",
+  "Name": "Websockets 4 StreamDeck",
+  "Icon": "action/images/action",
+  "URL": "https://www.github.com/cartufer/ws4sd/",
+  "Version": "0.6",
   "OS": [
     {
-        "Platform": "mac", 
+        "Platform": "mac",
         "MinimumVersion" : "10.11"
     },
     {
-        "Platform": "windows", 
+        "Platform": "windows",
         "MinimumVersion" : "10"
     }
   ],
-  "Software": 
+  "Software":
     {
         "MinimumVersion" : "4.1"
   }
