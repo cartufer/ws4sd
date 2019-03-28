@@ -16,4 +16,4 @@ remove images.sketch, make new icons // done, yay!! // redo icons
 
 could probably remove doSomething, it looks like test code
 
-test and build for distribution // release is in releases
+test and build for distribution // release is in Release
